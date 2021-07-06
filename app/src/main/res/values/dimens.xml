@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin">70dip</dimen>
+    <dimen name="app_name_font_size">36sp</dimen>
+    <dimen name="button_text_size">16sp</dimen>
+    <dimen name="learn_date_font_size">48sp</dimen>
+    <dimen name="learn_date_margin_top">280dp</dimen>
+    <dimen name="button_width">2dp</dimen>
+    <dimen name="button_corner_radius">20dp</dimen>
+    <dimen name="button_layout_width">258dp</dimen>
+    <dimen name="go_button_margin_top">140dp</dimen>
+</resources>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ButtonActivity"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="203dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/learn_date_margin_top"
+        android:text="@string/learn_date"
+        android:textAlignment="center"
+        android:textSize="@dimen/learn_date_font_size" />
+
+    <Button
+        android:id="@+id/goButton"
+        android:layout_width="289dp"
+        android:layout_height="77dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/go_button_margin_top"
+        android:background="@drawable/btn3x"
+        android:text="@string/go" />
+
+
+</LinearLayout>

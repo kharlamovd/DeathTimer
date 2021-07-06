@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">DEATH TIMER COUNTDOWN</string>
+    <string name="loading">LOADING</string>
+    <string name="priv_policy">
+        <a href="http://www.google.com">Политика конфиденциальности</a>
+    </string>
+    <string name="learn_date">Узнаем дату?</string>
+    <string name="go">Погнали</string>
+    <string name="yes">Да</string>
+    <string name="skip">Пропустить</string>
+    <string name="next">Далее</string>
+    <string name="enter_data">Введите\n данные</string>
+    <string name="you_know_1">Возможно, вы уже \n всё знаете сами?</string>
+    <string name="you_know_2">Хотите попробовать \n ввести дату \n автоматически?</string>
+</resources>
