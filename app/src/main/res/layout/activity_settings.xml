@@ -1,9 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".SettingsActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/nav_button_layout_height"
+        style="@style/nav_buttons_layout_style"
+        android:orientation="horizontal" >
+        <ImageButton
+            android:layout_marginStart="@dimen/nav_button_margin_start"
+            android:id="@+id/backButton"
+            android:layout_gravity="start"
+            style="@style/nav_buttons_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ico_back" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/just_under_lamp_margin_top"
+        android:text="@string/settings"
+        android:textSize="@dimen/learn_date_text_size" />
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_marginTop="60dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/checkbox_style"
+        android:text="@string/get_date_auto" />
+
+    <TextView
+        android:id="@+id/privPolTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:layout_marginTop="200dp"
+        android:fontFamily="@font/roboto_regular"
+        android:linksClickable="true"
+        android:text="@string/priv_policy" />
+
+    <Button
+        android:id="@+id/btnNext"
+        android:layout_width="@dimen/button_layout_width"
+        android:layout_height="@dimen/button_layout_height"
+        android:layout_marginTop="10dp"
+        style="@style/button_style"
+        android:onClick="onClick"
+        android:text="@string/learn_date" />
+
+</LinearLayout>

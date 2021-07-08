@@ -1,15 +1,39 @@
 <resources>
-    <string name="app_name">DEATH TIMER COUNTDOWN</string>
+    <string name="app_name">Death Timer Countdown</string>
+
+    <string name="app_name_caps">DEATH TIMER COUNTDOWN</string>
     <string name="loading">LOADING</string>
     <string name="priv_policy">
-        <a href="http://www.google.com">Политика конфиденциальности</a>
+        <a href="https://docs.google.com/document/d/1Y2RA9KgNXLX5hlPLVqIXtKejVTzXl-h-KfPEV5P41YE/edit?usp=sharing">
+            Политика конфиденциальности
+        </a>
     </string>
-    <string name="learn_date">Узнаем дату?</string>
+    <string name="ask_learn_date">Узнаем дату?</string>
+    <string name="learn_date">Узнать дату</string>
     <string name="go">Погнали</string>
+    <string name="enter_bday">Введите свою дату рождения</string>
+    <string name="my_bday">Я родился</string>
+
     <string name="yes">Да</string>
     <string name="skip">Пропустить</string>
     <string name="next">Далее</string>
-    <string name="enter_data">Введите\n данные</string>
-    <string name="you_know_1">Возможно, вы уже \n всё знаете сами?</string>
-    <string name="you_know_2">Хотите попробовать \n ввести дату \n автоматически?</string>
+
+    <string name="enter_data">Введите данные</string>
+    <string name="you_know_1">Возможно, вы уже всё знаете сами?</string>
+    <string name="you_know_2">Хотите попробовать ввести дату автоматически?</string>
+    <string name="enter_death_date">Введите свою дату смерти</string>
+    <string name="left">Осталось</string>
+    <string name="days_left">24709 дней</string>
+    <string name="hms_left">05:55:43</string>
+    <string name="settings">Настройки</string>
+    <string name="get_date_auto">Узнать дату автоматически</string>
+    <string name="i_smoke">Я курю</string>
+    <string name="i_drink">Я выпиваю</string>
+
+    <string-array name="drink_habit">
+        <item>1 раз в месяц</item>
+        <item>3 раза в месяц</item>
+        <item>10 раз в месяц</item>
+        <item>Больше 10 раз в месяц</item>
+    </string-array>
 </resources>

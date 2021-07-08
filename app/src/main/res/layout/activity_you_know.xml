@@ -1,9 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".YouKnowActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/nav_button_layout_height"
+        style="@style/nav_buttons_layout_style"
+        android:orientation="horizontal" >
+        <ImageButton
+            android:layout_marginStart="@dimen/nav_button_margin_start"
+            android:id="@+id/backButton"
+            android:layout_gravity="start"
+            style="@style/nav_buttons_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ico_back" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <ImageButton
+            android:id="@+id/settingsButton"
+            android:layout_gravity="end"
+            style="@style/nav_buttons_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/nav_button_margin_start"
+            app:srcCompat="@drawable/ico_settings" />
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/textView4"
+        style="@style/textview_style"
+        android:layout_width="286dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/just_under_lamp_margin_top"
+        android:text="@string/you_know_1"
+        android:textSize="@dimen/you_know_text_size" />
+
+    <TextView
+        android:id="@+id/textView5"
+        style="@style/textview_style"
+        android:layout_width="274dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/you_know_margin_top"
+        android:text="@string/you_know_2"
+        android:textSize="@dimen/you_know_text_size" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="@dimen/button_layout_width"
+        android:layout_height="@dimen/button_layout_height"
+        android:layout_marginTop="@dimen/yes_button_margin_top"
+        style="@style/button_style"
+        android:text="@string/yes" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="@dimen/button_layout_width"
+        android:layout_height="@dimen/button_layout_height"
+        style="@style/button_style"
+        android:text="@string/skip" />
+
+</LinearLayout>

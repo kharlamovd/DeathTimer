@@ -8,34 +8,55 @@
     tools:context=".BirthdayActivity"
     android:gravity="center">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/text_input_layout"
+    <include
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:errorEnabled="true"
-        android:hint="my_hint">
+        layout="@layout/nav_buttons_layout" />
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:id="@+id/textView"
+        style="@style/textview_style"
+        android:layout_width="221dp"
+        android:layout_height="wrap_content"
+        android:text="@string/enter_bday"
+        android:textAlignment="center" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_input_layout"
+        android:layout_width="359dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        style="@style/edittext_style"
+        android:textColorHint="@color/white"
+        app:errorTextColor="@color/design_default_color_error"
+        android:hint="@string/my_bday"
+        app:errorEnabled="true">
 
         <EditText
             android:id="@+id/editText"
-            android:layout_width="match_parent"
+            style="@style/edittext_style"
+            android:layout_width="340dp"
             android:layout_height="wrap_content"
-            android:editable="false"
-            android:hint="UserName"/>
+            android:textColor="@color/white"
+            android:background="@drawable/spinner" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <DatePicker
         android:id="@+id/datePicker"
+        android:theme="@style/date_picker_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/margin"
         android:calendarViewShown="false"
         android:datePickerMode="spinner"
-        android:minDate="01.01.1900" />
+
+        android:minDate="01/01/1900" />
 
     <Button
         android:id="@+id/button"
-        android:layout_width="343dp"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/button_layout_width"
+        android:layout_height="@dimen/button_layout_height"
+        style="@style/button_style"
         android:text="@string/next" />
 
 </LinearLayout>

@@ -1,12 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="margin">70dip</dimen>
+
     <dimen name="app_name_font_size">36sp</dimen>
-    <dimen name="button_text_size">16sp</dimen>
-    <dimen name="learn_date_font_size">48sp</dimen>
-    <dimen name="learn_date_margin_top">280dp</dimen>
+
+    <dimen name="learn_date_text_size">48sp</dimen>
+
+    <dimen name="textview_text_size">36sp</dimen>
+
+    <dimen name="checkbox_text_size">18sp</dimen>
+
+    <dimen name="learn_date_margin_top">160dp</dimen>
+
+    <dimen name="nav_button_layout_width">60dp</dimen>
+    <dimen name="nav_button_layout_height">60dp</dimen>
+    <dimen name="nav_button_margin_top">0dp</dimen>
+    <dimen name="nav_button_margin_start">30dp</dimen>
+
+    <dimen name="button_text_size">24sp</dimen>
     <dimen name="button_width">2dp</dimen>
     <dimen name="button_corner_radius">20dp</dimen>
-    <dimen name="button_layout_width">258dp</dimen>
-    <dimen name="go_button_margin_top">140dp</dimen>
+    <dimen name="button_layout_width">289dp</dimen>
+    <dimen name="button_layout_height">77dp</dimen>
+
+    <dimen name="go_button_margin_top">180dp</dimen>
+
+    <dimen name="you_know_margin_top">40dp</dimen>
+    <dimen name="you_know_text_size">24sp</dimen>
+
+    <dimen name="just_under_lamp_margin_top">50dp</dimen>
+    <dimen name="yes_button_margin_top">165dp</dimen>
+
+    <dimen name="time_left_next_button_margin_top">100dp</dimen>
+
+    <dimen name="input_label_vertical_spacing">8dp</dimen>
+    <dimen name="input_label_horizontal_spacing">4dp</dimen>
 </resources>

@@ -5,18 +5,92 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
+    android:orientation="vertical"
     tools:context=".BadHabitsActivity">
 
-    <EditText
-        android:id="@+id/editTextTextPersonName"
-        android:layout_width="156dp"
-        android:layout_height="54dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:scrollHorizontally="false"
-        android:text=""
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="127dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/nav_button_layout_height"
+        style="@style/nav_buttons_layout_style"
+        android:orientation="horizontal" >
+        <ImageButton
+            android:layout_marginStart="@dimen/nav_button_margin_start"
+            android:id="@+id/backButton"
+            android:layout_gravity="start"
+            style="@style/nav_buttons_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ico_back" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <ImageButton
+            android:id="@+id/settingsButton"
+            android:layout_gravity="end"
+            style="@style/nav_buttons_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/nav_button_margin_start"
+            app:srcCompat="@drawable/ico_settings" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView7"
+        style="@style/textview_style"
+        android:layout_width="269dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/just_under_lamp_margin_top"
+        android:text="@string/enter_data" />
+
+    <RelativeLayout
+        android:layout_width="350dp"
+        android:layout_height="48dp"
+        android:layout_marginRight="3dp"
+        android:background="@drawable/spinner"
+        android:layout_marginTop="50dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:src="@mipmap/drop" />
+
+        <Spinner
+            android:id="@+id/spinner2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            app:helperTextEnabled="true"
+            app:helperText="holy_shit"
+            android:layout_marginEnd="5dp"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:hint="@string/i_drink"
+            android:spinnerMode="dropdown" />
+    </RelativeLayout>
+
+    <CheckBox
+        android:id="@+id/smokeCheckBox"
+        style="@style/checkbox_style"
+        android:layout_width="348dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="@string/i_smoke" />
+
+    <Button
+        android:id="@+id/btnNext"
+        android:layout_width="@dimen/button_layout_width"
+        android:layout_height="@dimen/button_layout_height"
+        android:layout_marginTop="135dp"
+        style="@style/button_style"
+        android:text="@string/next" />
 
 </LinearLayout>

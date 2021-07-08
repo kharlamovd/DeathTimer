@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
@@ -13,7 +14,7 @@
         android:layout_width="148dp"
         android:layout_height="177dp"
         android:layout_marginBottom="10dp"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="@dimen/margin"
         android:src="@drawable/logo_ico3x"/>
 
     <TextView
@@ -26,24 +27,37 @@
         android:textSize="@dimen/app_name_font_size" />
     <!--android:textColor="@color/white"-->
 
-    <ProgressBar
+    <!--<ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="198dp"
         android:layout_height="41dp"
-        android:layout_marginTop="70sp" />
+        android:layout_marginTop="70sp" />-->
+
+    <pl.droidsonroids.gif.GifImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/tenor_crop"
+        android:layout_marginTop="@dimen/time_left_next_button_margin_top"
+        />
+
+    <!--<ImageView
+        android:id="@+id/progBar"
+        android:layout_width="273dp"
+        android:layout_height="148dp"
+        android:layout_marginTop="@dimen/time_left_next_button_margin_top" />-->
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="100dp"
         android:layout_height="20dp"
+        android:layout_marginTop="4dp"
         app:srcCompat="@drawable/loading3x" />
 
     <TextView
         android:id="@+id/privPolTextView"
         android:layout_width="wrap_content"
         android:layout_height="32dp"
-        android:layout_centerInParent="true"
         android:layout_marginTop="@dimen/margin"
         android:fontFamily="@font/roboto_regular"
         android:linksClickable="true"
