@@ -4,12 +4,15 @@
     <string name="app_name_caps">DEATH TIMER COUNTDOWN</string>
     <string name="loading">LOADING</string>
     <string name="priv_policy">
+            Политика конфиденциальности
+    </string>
+    <string name="priv_policy_">
         <a href="https://docs.google.com/document/d/1Y2RA9KgNXLX5hlPLVqIXtKejVTzXl-h-KfPEV5P41YE/edit?usp=sharing">
             Политика конфиденциальности
         </a>
     </string>
     <string name="ask_learn_date">Узнаем дату?</string>
-    <string name="learn_date">Узнать дату</string>
+    <string name="save">Сохранить</string>
     <string name="go">Погнали</string>
     <string name="enter_bday">Введите свою дату рождения</string>
     <string name="my_bday">Я родился</string>

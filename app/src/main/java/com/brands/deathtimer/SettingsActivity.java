@@ -9,17 +9,32 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.ImageButton;
+import android.widget.TextView;
+
+import com.brands.deathtimer.nav_btns_listeners.BackOnClick;
 
 public class SettingsActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private static final String AUTO_DEATH_DATE_PREF = "autoDeathDate";
+    private static final String IS_AUTO_DEATH_DATE_PREF = "autoDeathDate";
+    private static final String DEATH_DATE_PREF = "deathDate";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+
+        TextView t2 = (TextView) findViewById(R.id.privPolTextView);
+        t2.setMovementMethod(LinkMovementMethod.getInstance());
+
+        CheckBox checkBox = findViewById(R.id.checkBox);
+        checkBox.setChecked(isDeathDateAuto(this));
+
+        ImageButton backButton = findViewById(R.id.backButton);
+        backButton.setOnClickListener(new BackOnClick(this));
     }
 
     @Override
@@ -40,14 +55,27 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
 
     public static boolean isDeathDateAuto(Context context) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
-        return preferences.getBoolean(AUTO_DEATH_DATE_PREF, false);
+        return preferences.getBoolean(IS_AUTO_DEATH_DATE_PREF, false);
     }
 
     private void setDeathDateAuto(boolean auto) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editor = preferences.edit();
 
-        editor.putBoolean(AUTO_DEATH_DATE_PREF, auto);
+        editor.putBoolean(IS_AUTO_DEATH_DATE_PREF, auto);
+        editor.commit();
+    }
+
+    public static long getDeathDateMillis(Context context) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        return preferences.getLong(DEATH_DATE_PREF, 0);
+    }
+
+    private void setDeathDateMillis(long deathDateMillis) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = preferences.edit();
+
+        editor.putLong(DEATH_DATE_PREF, deathDateMillis);
         editor.commit();
     }
 

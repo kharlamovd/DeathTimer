@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="margin">70dip</dimen>
+    <dimen name="margin">70dp</dimen>
 
     <dimen name="app_name_font_size">36sp</dimen>
 
@@ -14,7 +14,7 @@
 
     <dimen name="nav_button_layout_width">60dp</dimen>
     <dimen name="nav_button_layout_height">60dp</dimen>
-    <dimen name="nav_button_margin_top">0dp</dimen>
+    <dimen name="nav_button_margin_top">60dp</dimen>
     <dimen name="nav_button_margin_start">30dp</dimen>
 
     <dimen name="button_text_size">24sp</dimen>

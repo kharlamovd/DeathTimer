@@ -12,14 +12,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DeathTimer" >
 
-        <activity android:name=".SettingsActivity"></activity>
-        <activity android:name=".TimeLeftActivity" />
-        <activity android:name=".EnterDeathDayActivity" />
-        <activity android:name=".YouKnowActivity" />
-        <activity android:name=".BirthdayActivity" />
-        <activity android:name=".BadHabitsActivity" />
-        <activity android:name=".ButtonActivity" />
-        <activity android:name=".MainActivity" android:noHistory="true">
+        <activity android:name=".SettingsActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".TimeLeftActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".EnterDeathDayActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".YouKnowActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".BirthdayActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".BadHabitsActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ButtonActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".MainActivity" android:screenOrientation="portrait" android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

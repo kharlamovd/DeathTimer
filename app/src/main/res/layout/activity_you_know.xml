@@ -58,18 +58,20 @@
         android:textSize="@dimen/you_know_text_size" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/yesButton"
         android:layout_width="@dimen/button_layout_width"
         android:layout_height="@dimen/button_layout_height"
         android:layout_marginTop="@dimen/yes_button_margin_top"
         style="@style/button_style"
+        android:onClick="onClick"
         android:text="@string/yes" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/skipButton"
         android:layout_width="@dimen/button_layout_width"
         android:layout_height="@dimen/button_layout_height"
         style="@style/button_style"
+        android:onClick="onClick"
         android:text="@string/skip" />
 
 </LinearLayout>

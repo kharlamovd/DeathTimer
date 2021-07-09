@@ -27,25 +27,12 @@
         android:textSize="@dimen/app_name_font_size" />
     <!--android:textColor="@color/white"-->
 
-    <!--<ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="198dp"
-        android:layout_height="41dp"
-        android:layout_marginTop="70sp" />-->
-
     <pl.droidsonroids.gif.GifImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/tenor_crop"
         android:layout_marginTop="@dimen/time_left_next_button_margin_top"
         />
-
-    <!--<ImageView
-        android:id="@+id/progBar"
-        android:layout_width="273dp"
-        android:layout_height="148dp"
-        android:layout_marginTop="@dimen/time_left_next_button_margin_top" />-->
 
     <ImageView
         android:id="@+id/imageView2"
