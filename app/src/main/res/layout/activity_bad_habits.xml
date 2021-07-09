@@ -21,11 +21,17 @@
         android:layout_marginTop="30dp"
         android:text="@string/enter_data" />
 
+    <TextView
+        style="@style/floating_label"
+        android:layout_width="281dp"
+        android:layout_height="22dp"
+        android:layout_marginTop="50dp"
+        android:text="@string/i_drink" />
+
     <RelativeLayout
         android:layout_width="296dp"
         android:layout_height="48dp"
-        android:layout_marginRight="3dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginEnd="3dp"
         android:background="@drawable/spinner"
         android:orientation="horizontal">
 
@@ -64,8 +70,9 @@
         android:id="@+id/btnNext"
         android:layout_width="@dimen/button_layout_width"
         android:layout_height="@dimen/button_layout_height"
-        android:layout_marginTop="135dp"
+        android:layout_marginTop="155dp"
         style="@style/button_style"
+        android:onClick="onClick"
         android:text="@string/next" />
 
 </LinearLayout>

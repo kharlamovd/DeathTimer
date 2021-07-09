@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.method.LinkMovementMethod;
@@ -17,7 +18,7 @@ import android.widget.TextView;
 
 import com.brands.deathtimer.nav_btns_listeners.BackOnClick;
 
-public class SettingsActivity extends AppCompatActivity implements View.OnClickListener {
+public class SettingsActivity extends AppCompatActivity {
 
     private static final String IS_AUTO_DEATH_DATE_PREF = "autoDeathDate";
     private static final String DEATH_DATE_PREF = "deathDate";
@@ -37,8 +38,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         backButton.setOnClickListener(new BackOnClick(this));
     }
 
-    @Override
-    public void onClick(View view) {
+    public void onSaveButtonClick(View view) {
         CheckBox checkBox = findViewById(R.id.checkBox);
         boolean auto = checkBox.isChecked();
 
@@ -51,6 +51,13 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         } else {
             super.onBackPressed();
         }
+    }
+
+    public void onPrivacyPolicyLinkClick(View view) {
+        /*Intent i = new Intent(this, ButtonActivity.class);
+        startActivity(i);*/
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.priv_policy_link)));
+        this.startActivity(browserIntent);
     }
 
     public static boolean isDeathDateAuto(Context context) {

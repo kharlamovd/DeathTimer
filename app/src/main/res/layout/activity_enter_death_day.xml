@@ -39,17 +39,49 @@
 
     <TextView
         android:id="@+id/textView6"
-        android:layout_width="262dp"
+        style="@style/textview_style"
+        android:layout_width="255dp"
         android:layout_height="wrap_content"
-        android:text="@string/enter_death_date"
         android:layout_marginTop="@dimen/just_under_lamp_margin_top"
-        style="@style/textview_style" />
+        android:text="@string/enter_death_date" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_input_layout"
+        android:layout_width="359dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        style="@style/edittext_style"
+        android:textColorHint="@color/white"
+        app:errorTextColor="@color/design_default_color_error"
+        android:hint="@string/my_dday"
+        app:errorEnabled="true">
+
+        <EditText
+            android:id="@+id/editText"
+            style="@style/edittext_style"
+            android:layout_width="340dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:inputType="none"
+            android:focusable="false"
+            android:background="@drawable/spinner" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <DatePicker
+        android:id="@+id/datePicker"
+        android:theme="@style/date_picker_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:calendarViewShown="false"
+        android:datePickerMode="spinner"
+        android:minDate="01/01/1900" />
 
     <Button
-        android:id="@+id/btnNext"
+        android:id="@+id/button"
         android:layout_width="@dimen/button_layout_width"
         android:layout_height="@dimen/button_layout_height"
         style="@style/button_style"
+        android:onClick="onClick"
         android:text="@string/next" />
 
 </LinearLayout>

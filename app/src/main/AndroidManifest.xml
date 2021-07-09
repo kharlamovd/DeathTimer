@@ -12,7 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DeathTimer" >
 
-        <activity android:name=".SettingsActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".SettingsActivity" android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity android:name=".TimeLeftActivity" android:screenOrientation="portrait"/>
         <activity android:name=".EnterDeathDayActivity" android:screenOrientation="portrait"/>
         <activity android:name=".YouKnowActivity" android:screenOrientation="portrait"/>

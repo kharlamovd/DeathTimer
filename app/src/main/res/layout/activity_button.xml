@@ -31,7 +31,7 @@
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="203dp"
+        android:layout_width="339dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/learn_date_margin_top"

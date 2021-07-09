@@ -4,18 +4,17 @@
     <string name="app_name_caps">DEATH TIMER COUNTDOWN</string>
     <string name="loading">LOADING</string>
     <string name="priv_policy">
-            Политика конфиденциальности
+        <u>Политика конфиденциальности</u>
     </string>
-    <string name="priv_policy_">
-        <a href="https://docs.google.com/document/d/1Y2RA9KgNXLX5hlPLVqIXtKejVTzXl-h-KfPEV5P41YE/edit?usp=sharing">
-            Политика конфиденциальности
-        </a>
+    <string name="priv_policy_link">
+        http://docs.google.com/document/d/1Y2RA9KgNXLX5hlPLVqIXtKejVTzXl-h-KfPEV5P41YE/edit?usp=sharing">
     </string>
     <string name="ask_learn_date">Узнаем дату?</string>
     <string name="save">Сохранить</string>
     <string name="go">Погнали</string>
     <string name="enter_bday">Введите свою дату рождения</string>
     <string name="my_bday">Я родился</string>
+    <string name="my_dday">Выберите дату</string>
 
     <string name="yes">Да</string>
     <string name="skip">Пропустить</string>
@@ -27,6 +26,7 @@
     <string name="enter_death_date">Введите свою дату смерти</string>
     <string name="left">Осталось</string>
     <string name="days_left">24709 дней</string>
+    <string name="days">дней</string>
     <string name="hms_left">05:55:43</string>
     <string name="settings">Настройки</string>
     <string name="get_date_auto">Узнать дату автоматически</string>
@@ -39,4 +39,6 @@
         <item>10 раз в месяц</item>
         <item>Больше 10 раз в месяц</item>
     </string-array>
+
+    <string name="your_dead">Вы мертвы</string>
 </resources>

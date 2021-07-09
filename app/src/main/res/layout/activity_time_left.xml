@@ -7,35 +7,11 @@
     android:orientation="vertical"
     tools:context=".TimeLeftActivity">
 
-    <LinearLayout
+    <include
+        android:layout_marginTop="@dimen/nav_button_margin_top"
+        layout="@layout/nav_buttons_layout"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/nav_button_layout_height"
-        style="@style/nav_buttons_layout_style"
-        android:orientation="horizontal" >
-        <ImageButton
-            android:layout_marginStart="@dimen/nav_button_margin_start"
-            android:id="@+id/backButton"
-            android:layout_gravity="start"
-            style="@style/nav_buttons_style"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ico_back" />
-
-        <View
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
-
-        <ImageButton
-            android:id="@+id/settingsButton"
-            android:layout_gravity="end"
-            style="@style/nav_buttons_style"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/nav_button_margin_start"
-            app:srcCompat="@drawable/ico_settings" />
-
-    </LinearLayout>
+        android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/textView6"
@@ -46,28 +22,28 @@
         android:textSize="@dimen/learn_date_text_size" />
 
     <TextView
-        android:id="@+id/timeLeftTextView"
+        android:id="@+id/daysLeftTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="80dp"
         android:text="@string/days_left"
         android:textAlignment="center"
         android:textSize="@dimen/learn_date_text_size" />
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/timeLeftTextView"
         android:layout_marginTop="@dimen/nav_button_margin_start"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/textview_style"
         android:text="@string/hms_left" />
 
-    <Button
+    <!--<Button
         android:id="@+id/btnNext"
         android:layout_width="@dimen/button_layout_width"
         android:layout_height="@dimen/button_layout_height"
         android:layout_marginTop="@dimen/time_left_next_button_margin_top"
         style="@style/button_style"
-        android:text="@string/next" />
+        android:text="@string/next" />-->
 
 </LinearLayout>

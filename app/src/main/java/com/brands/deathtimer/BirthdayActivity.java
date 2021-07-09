@@ -17,13 +17,16 @@ import com.brands.deathtimer.nav_btns_listeners.BackOnClick;
 import com.brands.deathtimer.nav_btns_listeners.SettingsOnClick;
 
 import java.time.LocalDate;
+import java.util.Calendar;
 import java.util.Date;
+
+import static com.brands.deathtimer.extras.DateManager.INIT_DAY;
+import static com.brands.deathtimer.extras.DateManager.INIT_MONTH;
+import static com.brands.deathtimer.extras.DateManager.INIT_YEAR;
 
 public class BirthdayActivity extends AppCompatActivity implements DatePicker.OnDateChangedListener, View.OnClickListener {
 
-    private final int INIT_DAY = 1;
-    private final int INIT_MONTH = 0;
-    private final int INIT_YEAR = 1990;
+    private boolean isUSDevice = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,10 +34,13 @@ public class BirthdayActivity extends AppCompatActivity implements DatePicker.On
         setContentView(R.layout.activity_birthday);
 
         DatePicker datePicker = findViewById(R.id.datePicker);
-        EditText editText = findViewById(R.id.editText);
+
+        isUSDevice = DateManager.isUSDevice(this);
 
         datePicker.init(INIT_YEAR, INIT_MONTH, INIT_DAY, this);
-        editText.setText(DateManager.getDate(INIT_DAY, INIT_MONTH, INIT_YEAR, this));
+        onDateChanged(datePicker, INIT_YEAR, INIT_MONTH, INIT_DAY);
+
+        datePicker.setMaxDate(DateManager.getTodayInMillis());
 
         ImageButton backButton = findViewById(R.id.backButton);
         backButton.setOnClickListener(new BackOnClick(this));
@@ -45,7 +51,10 @@ public class BirthdayActivity extends AppCompatActivity implements DatePicker.On
     @Override
     public void onDateChanged(DatePicker datePicker, int year, int month, int day) {
         EditText editText = findViewById(R.id.editText);
-        editText.setText(DateManager.getDate(day, month, year, this));
+        if (isUSDevice)
+            editText.setText(DateManager.getUSDate(day, month, year, this));
+        else
+            editText.setText(DateManager.getRegularDate(day, month, year, this));
     }
 
 
@@ -55,7 +64,7 @@ public class BirthdayActivity extends AppCompatActivity implements DatePicker.On
 
         int day = datePicker.getDayOfMonth();
         int month = datePicker.getMonth();
-        int year = datePicker.getYear();
+        int year = datePicker.getYear() - 1900;
 
         Date bday = new Date(year, month, day);
 
@@ -63,4 +72,5 @@ public class BirthdayActivity extends AppCompatActivity implements DatePicker.On
         intent.putExtra("bday", bday);
         startActivity(intent);
     }
+
 }

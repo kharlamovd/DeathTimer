@@ -2,6 +2,7 @@ package com.brands.deathtimer;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -40,10 +41,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void setTimeOut() {
+        Activity activity = this;
+
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent i = new Intent(MainActivity.this, ButtonActivity.class);
+                long deathTimeMillis = SettingsActivity.getDeathDateMillis(activity);
+
+                Intent i;
+                if (deathTimeMillis > 0)
+                    i = new Intent(MainActivity.this, TimeLeftActivity.class);
+                else
+                    i = new Intent(MainActivity.this, ButtonActivity.class);
                 startActivity(i);
                 finish();
             }
@@ -61,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent i = new Intent(MainActivity.this, ButtonActivity.class);
         startActivity(i);
 
-        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com"));
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.priv_policy_link)));
         startActivity(browserIntent);
     }
 }
