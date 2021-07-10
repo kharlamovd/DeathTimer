@@ -1,14 +1,11 @@
 package com.brands.deathtimer;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -16,9 +13,14 @@ import android.widget.TextView;
 import com.brands.deathtimer.nav_btns_listeners.BackOnClick;
 import com.brands.deathtimer.nav_btns_listeners.SettingsOnClick;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.ThreadLocalRandom;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import static com.brands.deathtimer.extras.DateManager.AVG_LIFE_DURATION_YRS;
 
@@ -48,33 +50,32 @@ public class TimeLeftActivity extends AppCompatActivity implements View.OnClickL
     private long calculateTimeLeft() {
         Intent intent = getIntent();
 
-        int minusYears = intent.getIntExtra("minusYears", 0);
-        Date bday = (Date) intent.getSerializableExtra("bday");
         Date dday;
 
-        if (intent.hasExtra("dday"))
+        if (intent.hasExtra("dday")) {
             dday = (Date) intent.getSerializableExtra("dday");
+        }
         else {
+            Date bday = (Date) intent.getSerializableExtra("bday");
+            int minusYears = intent.getIntExtra("minusYears", 0);
+
             Calendar c = Calendar.getInstance();
             c.setTime(bday);
-            c.add(Calendar.YEAR, 10);
             Date d1 = c.getTime();
 
             c.setTime(bday);
             c.add(Calendar.YEAR, AVG_LIFE_DURATION_YRS);
             c.add(Calendar.YEAR, -minusYears);
-            Date d2 = c.getTime();
+            dday = c.getTime();
 
-            dday = new Date(ThreadLocalRandom.current()
-                    .nextLong(d1.getTime(), d2.getTime()));
         }
 
-        return dday.getTime() - System.currentTimeMillis();
+        return dday.getTime();
     }
 
     private void setCountDownTimer(long deathDateMillis) {
         String daysStr = getString(R.string.days);
-        Context context = this;
+        //Context context = this;
 
         TextView daysLeftTextView = findViewById(R.id.daysLeftTextView),
                 timeLeftTextView = findViewById(R.id.timeLeftTextView);
@@ -83,22 +84,36 @@ public class TimeLeftActivity extends AppCompatActivity implements View.OnClickL
 
             private long days, hours, minutes, seconds, now, millisLeft;
 
-            public void onTick(long millisUntilFinished) {
-                now = System.currentTimeMillis();
-                millisLeft = now - millisUntilFinished;
+            int secondsLeft = 0;
 
-                SettingsActivity.setDeathDateMillis(millisLeft, context);
+            public void onTick(long millisUntilFinished) {
+
+                now = System.currentTimeMillis();
+                millisLeft = Math.abs(now - deathDateMillis);
+
+                /*if (Math.round((float)millisLeft / 1000.0f) != secondsLeft)
+                {
+                    secondsLeft = Math.round((float)millisLeft / 1000.0f);
+                }*/
 
                 days = millisLeft / 1000 / 3600 / 24;
-                seconds = (int) (millisLeft / 1000) % 60 ;
+                seconds = (int) ((millisLeft) / 1000) % 60;
                 minutes = (int) ((millisLeft / (1000*60)) % 60);
                 hours   = (int) ((millisLeft / (1000*60*60)) % 24);
 
+                /*days *= (days < 0) ? -1 : 1;
+                seconds *= (seconds < 0) ? -1 : 1;
+                minutes *= (minutes < 0) ? -1 : 1;
+                hours *= (hours < 0) ? -1 : 1;*/
+
+                /*if (Math.round((float)millisUntilFinished / 1000.0f % 60.0f) != secondsLeft)
+                {
+                    secondsLeft = Math.round((float)millisUntilFinished / 1000.0f % 60.0f);
+                }*/
+
                 daysLeftTextView.setText(days + " " + daysStr);
-                if (seconds < 10)
-                    timeLeftTextView.setText(hours + ":" + minutes + ":0" + seconds);
-                else
-                    timeLeftTextView.setText(hours + ":" + minutes + ":" + seconds);
+                timeLeftTextView.setText(String.format("0%2d:%02d:%02d", hours, minutes, seconds));
+
             }
 
             public void onFinish() {
@@ -116,7 +131,7 @@ public class TimeLeftActivity extends AppCompatActivity implements View.OnClickL
     public void onClick(View view) {
         Context context = this;
 
-        AlertDialog dialog = new AlertDialog.Builder(this, AlertDialog.THEME_HOLO_DARK)
+        /*AlertDialog dialog = */new AlertDialog.Builder(this, AlertDialog.THEME_HOLO_DARK)
                 .setTitle(getString(R.string.reset_date))
                 .setMessage(getString(R.string.are_you_sure))
 

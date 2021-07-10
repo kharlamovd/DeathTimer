@@ -74,7 +74,7 @@ public class EnterDeathDayActivity extends AppCompatActivity implements DatePick
         Intent intent = getIntent();
 
         Date dday = new Date(year - 1900, month, day);
-        int minusYears = intent.getIntExtra("minusYears", 0);
+        //int minusYears = intent.getIntExtra("minusYears", 0);
         Date bday = (Date) intent.getSerializableExtra("bday");
 
         intent = new Intent(this, TimeLeftActivity.class);
@@ -82,7 +82,7 @@ public class EnterDeathDayActivity extends AppCompatActivity implements DatePick
 
         intent.putExtra("bday", bday);
         intent.putExtra("dday", dday);
-        intent.putExtra("minusYears", minusYears);
+        //intent.putExtra("minusYears", minusYears);
 
         startActivity(intent);
     }

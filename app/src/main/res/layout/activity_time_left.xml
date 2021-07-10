@@ -15,11 +15,11 @@
 
     <TextView
         android:id="@+id/textView6"
-        android:layout_width="262dp"
-        android:layout_height="wrap_content"
-        android:text="@string/left"
         style="@style/textview_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/just_under_lamp_margin_top"
+        android:text="@string/left"
         android:textSize="@dimen/learn_date_text_size" />
 
     <TextView

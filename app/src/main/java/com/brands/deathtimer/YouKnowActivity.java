@@ -39,20 +39,14 @@ public class YouKnowActivity extends AppCompatActivity implements View.OnClickLi
                 break;
             case R.id.skipButton:
                 intent = new Intent(this, TimeLeftActivity.class);
+                intent.putExtra("minusYears", minusYears);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 break;
         }
 
         intent.putExtra("bday", bday);
-        intent.putExtra("minusYears", minusYears);
 
         startActivity(intent);
-    }
-
-    private void onButtonClick(Class nextActivity) {
-
-
-
     }
 
 }
