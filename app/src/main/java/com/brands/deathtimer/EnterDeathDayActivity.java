@@ -20,6 +20,7 @@ import java.util.GregorianCalendar;
 import static com.brands.deathtimer.extras.DateManager.INIT_DAY;
 import static com.brands.deathtimer.extras.DateManager.INIT_MONTH;
 import static com.brands.deathtimer.extras.DateManager.INIT_YEAR;
+import static com.brands.deathtimer.extras.DateManager.ONE_DAY_IN_MILLIS;
 
 public class EnterDeathDayActivity extends AppCompatActivity implements DatePicker.OnDateChangedListener, View.OnClickListener {
 
@@ -34,13 +35,6 @@ public class EnterDeathDayActivity extends AppCompatActivity implements DatePick
 
         isUSDevice = DateManager.isUSDevice(this);
 
-        Intent intent = getIntent();
-        Date bday = (Date) intent.getSerializableExtra("bday");
-
-        /*int year = bday.getYear();
-        int month = bday.getMonth() + 1;
-        int day =  bday.getDay();*/
-
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DAY_OF_YEAR, 1);
 
@@ -49,7 +43,7 @@ public class EnterDeathDayActivity extends AppCompatActivity implements DatePick
         int date  = cal.get(Calendar.DATE);
 
         datePicker.init(year, month, date, this);
-        datePicker.setMinDate(System.currentTimeMillis() + 24 * 60 * 60 * 1000);
+        datePicker.setMinDate(System.currentTimeMillis() + ONE_DAY_IN_MILLIS);
 
         onDateChanged(datePicker, year, month, date);
 
@@ -84,6 +78,8 @@ public class EnterDeathDayActivity extends AppCompatActivity implements DatePick
         Date bday = (Date) intent.getSerializableExtra("bday");
 
         intent = new Intent(this, TimeLeftActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
         intent.putExtra("bday", bday);
         intent.putExtra("dday", dday);
         intent.putExtra("minusYears", minusYears);

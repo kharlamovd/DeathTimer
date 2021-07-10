@@ -40,9 +40,10 @@ public class BadHabitsActivity extends AppCompatActivity implements View.OnClick
         Date bday = (Date) intent.getSerializableExtra("bday");
         int minusYears = calculateBadHabitsImpactInYears(drinkFrequency, doesSmoking);
 
-        if (SettingsActivity.isDeathDateAuto(this))
+        if (SettingsActivity.isDeathDateAuto(this)) {
             intent = new Intent(this, TimeLeftActivity.class);
-        else
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        } else
             intent = new Intent(this, YouKnowActivity.class);
 
         intent.putExtra("bday", bday);

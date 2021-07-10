@@ -18,6 +18,7 @@
         style="@style/textview_style"
         android:layout_width="221dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/just_under_lamp_margin_top"
         android:text="@string/enter_bday"
         android:textAlignment="center" />
 

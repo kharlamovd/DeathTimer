@@ -3,8 +3,10 @@ package com.brands.deathtimer;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.ContextWrapper;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -78,11 +80,19 @@ public class SettingsActivity extends AppCompatActivity {
         return preferences.getLong(DEATH_DATE_PREF, 0);
     }
 
-    private void setDeathDateMillis(long deathDateMillis) {
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+    public static void setDeathDateMillis(long deathDateMillis, Context context) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = preferences.edit();
 
         editor.putLong(DEATH_DATE_PREF, deathDateMillis);
+        editor.commit();
+    }
+
+    public static void removeDeathDateMillis(Context context) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = preferences.edit();
+
+        editor.remove(DEATH_DATE_PREF);
         editor.commit();
     }
 

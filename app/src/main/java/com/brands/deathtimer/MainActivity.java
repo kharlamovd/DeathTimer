@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     i = new Intent(MainActivity.this, TimeLeftActivity.class);
                 else
                     i = new Intent(MainActivity.this, ButtonActivity.class);
+
                 startActivity(i);
                 finish();
             }
@@ -67,7 +68,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-        Intent i = new Intent(MainActivity.this, ButtonActivity.class);
+        long deathTimeMillis = SettingsActivity.getDeathDateMillis(this);
+
+        Intent i;
+        if (deathTimeMillis > 0)
+            i = new Intent(MainActivity.this, TimeLeftActivity.class);
+        else
+            i = new Intent(MainActivity.this, ButtonActivity.class);
+
         startActivity(i);
 
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.priv_policy_link)));
