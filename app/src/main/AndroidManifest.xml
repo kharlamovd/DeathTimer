@@ -12,6 +12,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DeathTimer" >
 
+        <receiver android:name=".extras.notifications.ReminderBroadcast">
+            <intent-filter>
+                <action android:name="android.media.action.DISPLAY_NOTIFICATION" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
+
         <activity android:name=".SettingsActivity" android:screenOrientation="portrait">
             <intent-filter>
                 <category android:name="android.intent.category.BROWSABLE"/>
@@ -31,7 +39,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-    </application
-        >
+    </application>
 
 </manifest>

@@ -28,7 +28,7 @@
     <string name="you_know_2">Do you want to enter your death date?</string>
     <string name="enter_death_date">Enter your death date</string>
 
-    <string name="left">Left</string>
+    <string name="left">Time Left</string>
     <string name="days_left">24709 days</string>
     <string name="hms_left">05:55:43</string>
     <string name="days">days</string>

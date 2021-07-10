@@ -5,22 +5,22 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.brands.deathtimer.extras.notifications.NotificationUtils;
+import com.brands.deathtimer.extras.notifications.NotificationWorker;
 import com.brands.deathtimer.nav_btns_listeners.BackOnClick;
 import com.brands.deathtimer.nav_btns_listeners.SettingsOnClick;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.TimeUnit;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.work.PeriodicWorkRequest;
+import androidx.work.WorkManager;
 
 import static com.brands.deathtimer.extras.DateManager.AVG_LIFE_DURATION_YRS;
 
@@ -43,8 +43,23 @@ public class TimeLeftActivity extends AppCompatActivity implements View.OnClickL
         if (deathTimeMillis == 0)
             deathTimeMillis = calculateTimeLeft();
 
+        //reminderNotification();
+
+        PeriodicWorkRequest periodicWork = new PeriodicWorkRequest.Builder(NotificationWorker.class, PeriodicWorkRequest.MIN_PERIODIC_INTERVAL_MILLIS, TimeUnit.MILLISECONDS)
+                .build();
+        WorkManager.getInstance(this).enqueue(periodicWork);
+
         SettingsActivity.setDeathDateMillis(deathTimeMillis, this);
         setCountDownTimer(deathTimeMillis);
+    }
+
+    public void reminderNotification()
+    {
+        NotificationUtils _notificationUtils = new NotificationUtils(this);
+        long _currentTime = System.currentTimeMillis();
+        long tenSeconds = 1000 * 10;
+        long _triggerReminder = _currentTime + tenSeconds; //triggers a reminder after 10 seconds.
+        _notificationUtils.setReminder(_triggerReminder);
     }
 
     private long calculateTimeLeft() {
@@ -73,9 +88,29 @@ public class TimeLeftActivity extends AppCompatActivity implements View.OnClickL
         return dday.getTime();
     }
 
+    public static String getTimeLeft(Context context) {
+        long deathDateMillis = SettingsActivity.getDeathDateMillis(context);
+
+        long days, hours, minutes, seconds, now, millisLeft;
+
+        now = System.currentTimeMillis();
+        millisLeft = Math.abs(now - deathDateMillis);
+
+        String daysStr = context.getString(R.string.days);
+
+        days = millisLeft / 1000 / 3600 / 24;
+        seconds = (int) ((millisLeft) / 1000) % 60;
+        minutes = (int) ((millisLeft / (1000 * 60)) % 60);
+        hours = (int) ((millisLeft / (1000 * 60 * 60)) % 24);
+
+        String timeLeftStr = days + " " + daysStr + '\n';
+        timeLeftStr += String.format("%02d:%02d:%02d", hours, minutes, seconds);
+
+        return timeLeftStr;
+    }
+
     private void setCountDownTimer(long deathDateMillis) {
         String daysStr = getString(R.string.days);
-        //Context context = this;
 
         TextView daysLeftTextView = findViewById(R.id.daysLeftTextView),
                 timeLeftTextView = findViewById(R.id.timeLeftTextView);
@@ -84,35 +119,18 @@ public class TimeLeftActivity extends AppCompatActivity implements View.OnClickL
 
             private long days, hours, minutes, seconds, now, millisLeft;
 
-            int secondsLeft = 0;
-
             public void onTick(long millisUntilFinished) {
 
                 now = System.currentTimeMillis();
                 millisLeft = Math.abs(now - deathDateMillis);
-
-                /*if (Math.round((float)millisLeft / 1000.0f) != secondsLeft)
-                {
-                    secondsLeft = Math.round((float)millisLeft / 1000.0f);
-                }*/
 
                 days = millisLeft / 1000 / 3600 / 24;
                 seconds = (int) ((millisLeft) / 1000) % 60;
                 minutes = (int) ((millisLeft / (1000*60)) % 60);
                 hours   = (int) ((millisLeft / (1000*60*60)) % 24);
 
-                /*days *= (days < 0) ? -1 : 1;
-                seconds *= (seconds < 0) ? -1 : 1;
-                minutes *= (minutes < 0) ? -1 : 1;
-                hours *= (hours < 0) ? -1 : 1;*/
-
-                /*if (Math.round((float)millisUntilFinished / 1000.0f % 60.0f) != secondsLeft)
-                {
-                    secondsLeft = Math.round((float)millisUntilFinished / 1000.0f % 60.0f);
-                }*/
-
                 daysLeftTextView.setText(days + " " + daysStr);
-                timeLeftTextView.setText(String.format("0%2d:%02d:%02d", hours, minutes, seconds));
+                timeLeftTextView.setText(String.format("%02d:%02d:%02d", hours, minutes, seconds));
 
             }
 
@@ -131,7 +149,7 @@ public class TimeLeftActivity extends AppCompatActivity implements View.OnClickL
     public void onClick(View view) {
         Context context = this;
 
-        /*AlertDialog dialog = */new AlertDialog.Builder(this, AlertDialog.THEME_HOLO_DARK)
+        new AlertDialog.Builder(this, AlertDialog.THEME_HOLO_DARK)
                 .setTitle(getString(R.string.reset_date))
                 .setMessage(getString(R.string.are_you_sure))
 
