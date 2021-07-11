@@ -45,5 +45,7 @@
         <item>Больше 10 раз в месяц</item>
     </string-array>
 
+    <string name="notification">Вы видели сколько Вам осталось?</string>
+
     <string name="your_dead">Вы мертвы</string>
 </resources>

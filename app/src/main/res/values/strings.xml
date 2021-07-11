@@ -45,5 +45,7 @@
         <item>More than ten times a month</item>
     </string-array>
 
+    <string name="notification">Did you see how much you have left?</string>
+
     <string name="your_dead">YOUR DEAD</string>
 </resources>

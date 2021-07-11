@@ -5,6 +5,7 @@ import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.app.TaskStackBuilder;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.Intent;
@@ -12,13 +13,14 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.preference.PreferenceManager;
 
+import com.brands.deathtimer.MainActivity;
 import com.brands.deathtimer.R;
+import com.brands.deathtimer.TimeLeftActivity;
 
 import androidx.core.app.NotificationCompat;
 
 public class NotificationUtils extends ContextWrapper
 {
-    public static String CHANNEL_ID = "notification channel";
     public static String TIMELINE_CHANNEL_NAME = "Timeline notification";
 
     private NotificationManager _notificationManager;
@@ -66,8 +68,14 @@ public class NotificationUtils extends ContextWrapper
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(_context);
         int requestCode = preferences.getInt("PREF_REMINDER_REQUEST_CODE", -1);
 
-        Intent _intent = new Intent(_context, ReminderBroadcast.class);
-        PendingIntent _pendingIntent = PendingIntent.getBroadcast(_context, requestCode++, _intent, 0);
+        //Intent _intent = new Intent(_context, ReminderBroadcast.class);
+        Intent _intent = new Intent(_context, MainActivity.class);
+        PendingIntent _pendingIntent = TaskStackBuilder.create(_context)
+                .addNextIntent(_intent)
+                .getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        /*_intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        PendingIntent _pendingIntent = PendingIntent.getBroadcast(_context, requestCode++, _intent, 0);*/
 
         SharedPreferences.Editor editor = preferences.edit();
         editor.putInt("PREF_REMINDER_REQUEST_CODE", ++requestCode);

@@ -12,13 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DeathTimer" >
 
-        <receiver android:name=".extras.notifications.ReminderBroadcast">
+        <!--<receiver android:name=".extras.notifications.ReminderBroadcast">
             <intent-filter>
                 <action android:name="android.media.action.DISPLAY_NOTIFICATION" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-        </receiver>
+        </receiver>-->
 
         <activity android:name=".SettingsActivity" android:screenOrientation="portrait">
             <intent-filter>

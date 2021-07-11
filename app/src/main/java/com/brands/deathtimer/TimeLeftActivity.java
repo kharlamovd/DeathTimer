@@ -9,13 +9,13 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.brands.deathtimer.extras.notifications.NotificationUtils;
 import com.brands.deathtimer.extras.notifications.NotificationWorker;
 import com.brands.deathtimer.nav_btns_listeners.BackOnClick;
 import com.brands.deathtimer.nav_btns_listeners.SettingsOnClick;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,6 +27,7 @@ import static com.brands.deathtimer.extras.DateManager.AVG_LIFE_DURATION_YRS;
 public class TimeLeftActivity extends AppCompatActivity implements View.OnClickListener {
 
     private CountDownTimer timer;
+    public static UUID notificationWorkRequestId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,26 +41,18 @@ public class TimeLeftActivity extends AppCompatActivity implements View.OnClickL
 
         long deathTimeMillis = SettingsActivity.getDeathDateMillis(this);
 
-        if (deathTimeMillis == 0)
+        if (deathTimeMillis == 0) {
             deathTimeMillis = calculateTimeLeft();
 
-        //reminderNotification();
+            PeriodicWorkRequest periodicWork = new PeriodicWorkRequest.Builder(NotificationWorker.class, PeriodicWorkRequest.MIN_PERIODIC_INTERVAL_MILLIS, TimeUnit.MILLISECONDS)
+                    .build();
+            WorkManager.getInstance(this).enqueue(periodicWork);
 
-        PeriodicWorkRequest periodicWork = new PeriodicWorkRequest.Builder(NotificationWorker.class, PeriodicWorkRequest.MIN_PERIODIC_INTERVAL_MILLIS, TimeUnit.MILLISECONDS)
-                .build();
-        WorkManager.getInstance(this).enqueue(periodicWork);
+            notificationWorkRequestId = periodicWork.getId();
+        }
 
         SettingsActivity.setDeathDateMillis(deathTimeMillis, this);
         setCountDownTimer(deathTimeMillis);
-    }
-
-    public void reminderNotification()
-    {
-        NotificationUtils _notificationUtils = new NotificationUtils(this);
-        long _currentTime = System.currentTimeMillis();
-        long tenSeconds = 1000 * 10;
-        long _triggerReminder = _currentTime + tenSeconds; //triggers a reminder after 10 seconds.
-        _notificationUtils.setReminder(_triggerReminder);
     }
 
     private long calculateTimeLeft() {
@@ -76,7 +69,6 @@ public class TimeLeftActivity extends AppCompatActivity implements View.OnClickL
 
             Calendar c = Calendar.getInstance();
             c.setTime(bday);
-            Date d1 = c.getTime();
 
             c.setTime(bday);
             c.add(Calendar.YEAR, AVG_LIFE_DURATION_YRS);
@@ -154,6 +146,8 @@ public class TimeLeftActivity extends AppCompatActivity implements View.OnClickL
                 .setMessage(getString(R.string.are_you_sure))
 
                 .setPositiveButton(android.R.string.yes, (dialog1, which) -> {
+
+                    WorkManager.getInstance(this).cancelWorkById(notificationWorkRequestId);
 
                     timer.cancel();
                     SettingsActivity.removeDeathDateMillis(context);
