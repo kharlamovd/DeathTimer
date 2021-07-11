@@ -23,6 +23,7 @@ import androidx.work.PeriodicWorkRequest;
 import androidx.work.WorkManager;
 
 import static com.brands.deathtimer.extras.DateManager.AVG_LIFE_DURATION_YRS;
+import static com.brands.deathtimer.extras.DateManager.NOTIFICATION_FIRE_PERIOD_HOURS;
 
 public class TimeLeftActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -42,13 +43,13 @@ public class TimeLeftActivity extends AppCompatActivity implements View.OnClickL
         long deathTimeMillis = SettingsActivity.getDeathDateMillis(this);
 
         if (deathTimeMillis == 0) {
-            deathTimeMillis = calculateTimeLeft();
-
-            PeriodicWorkRequest periodicWork = new PeriodicWorkRequest.Builder(NotificationWorker.class, PeriodicWorkRequest.MIN_PERIODIC_INTERVAL_MILLIS, TimeUnit.MILLISECONDS)
+            PeriodicWorkRequest periodicWork = new PeriodicWorkRequest.Builder(NotificationWorker.class, NOTIFICATION_FIRE_PERIOD_HOURS, TimeUnit.HOURS)
                     .build();
             WorkManager.getInstance(this).enqueue(periodicWork);
 
             notificationWorkRequestId = periodicWork.getId();
+
+            deathTimeMillis = calculateTimeLeft();
         }
 
         SettingsActivity.setDeathDateMillis(deathTimeMillis, this);

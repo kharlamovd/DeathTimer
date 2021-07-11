@@ -15,6 +15,7 @@ public class DateManager {
     public static long ONE_DAY_IN_MILLIS = 24 * 60 * 60 * 1000;
 
     public static int AVG_LIFE_DURATION_YRS = 72/* * 365 * 24 * 60 * 60 * 1000*/;
+    public static int NOTIFICATION_FIRE_PERIOD_HOURS = 72/* * 365 * 24 * 60 * 60 * 1000*/;
 
     private static final String US_ALPHA_2_CODE = "US";
 

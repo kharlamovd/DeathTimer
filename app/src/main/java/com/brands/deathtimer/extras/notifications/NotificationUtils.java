@@ -19,6 +19,8 @@ import com.brands.deathtimer.TimeLeftActivity;
 
 import androidx.core.app.NotificationCompat;
 
+import static com.brands.deathtimer.extras.notifications.NotificationWorker.CHANNEL_ID;
+
 public class NotificationUtils extends ContextWrapper
 {
     public static String TIMELINE_CHANNEL_NAME = "Timeline notification";
@@ -65,21 +67,10 @@ public class NotificationUtils extends ContextWrapper
 
     public void setReminder(long timeInMillis)
     {
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(_context);
-        int requestCode = preferences.getInt("PREF_REMINDER_REQUEST_CODE", -1);
-
-        //Intent _intent = new Intent(_context, ReminderBroadcast.class);
-        Intent _intent = new Intent(_context, MainActivity.class);
+        Intent _intent = new Intent(_context, ReminderBroadcast.class);
         PendingIntent _pendingIntent = TaskStackBuilder.create(_context)
                 .addNextIntent(_intent)
                 .getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
-
-        /*_intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        PendingIntent _pendingIntent = PendingIntent.getBroadcast(_context, requestCode++, _intent, 0);*/
-
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putInt("PREF_REMINDER_REQUEST_CODE", ++requestCode);
-        editor.commit();
 
         AlarmManager _alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
 
