@@ -32,6 +32,8 @@
     <string name="days_left">24709 дней</string>
     <string name="hms_left">05:55:43</string>
     <string name="days">дней</string>
+    <string name="weeks">недель</string>
+    <string name="years">лет</string>
 
     <string name="settings">Настройки</string>
     <string name="get_date_auto">Узнать дату автоматически</string>

@@ -84,19 +84,25 @@ public class TimeLeftActivity extends AppCompatActivity implements View.OnClickL
     public static String getTimeLeft(Context context) {
         long deathDateMillis = SettingsActivity.getDeathDateMillis(context);
 
-        long days, hours, minutes, seconds, now, millisLeft;
+        long days, hours, minutes, weeks, years, seconds, now, millisLeft;
 
         now = System.currentTimeMillis();
         millisLeft = Math.abs(now - deathDateMillis);
 
         String daysStr = context.getString(R.string.days);
+        String weeksStr = context.getString(R.string.weeks);
+        String yearsStr = context.getString(R.string.years);
 
         days = millisLeft / 1000 / 3600 / 24;
         seconds = (int) ((millisLeft) / 1000) % 60;
         minutes = (int) ((millisLeft / (1000 * 60)) % 60);
         hours = (int) ((millisLeft / (1000 * 60 * 60)) % 24);
+        weeks = (int) (millisLeft / (1000 * 60 * 60 * 24 * 7));
+        years = (int) (millisLeft / 1000 / 60 / 60 / 24 / 365);
 
-        String timeLeftStr = days + " " + daysStr + '\n';
+        String timeLeftStr = days + " " + daysStr + '\n' +
+                weeks + " " + weeksStr + '\n' +
+                years + " " + yearsStr + '\n';
         timeLeftStr += String.format("%02d:%02d:%02d", hours, minutes, seconds);
 
         return timeLeftStr;
@@ -104,13 +110,15 @@ public class TimeLeftActivity extends AppCompatActivity implements View.OnClickL
 
     private void setCountDownTimer(long deathDateMillis) {
         String daysStr = getString(R.string.days);
+        String weeksStr = getString(R.string.weeks);
+        String yearsStr = getString(R.string.years);
 
         TextView daysLeftTextView = findViewById(R.id.daysLeftTextView),
                 timeLeftTextView = findViewById(R.id.timeLeftTextView);
 
         timer = new CountDownTimer(deathDateMillis, 1000) {
 
-            private long days, hours, minutes, seconds, now, millisLeft;
+            private long days, hours, minutes, seconds, now, millisLeft, weeks, years;
 
             public void onTick(long millisUntilFinished) {
 
@@ -121,8 +129,14 @@ public class TimeLeftActivity extends AppCompatActivity implements View.OnClickL
                 seconds = (int) ((millisLeft) / 1000) % 60;
                 minutes = (int) ((millisLeft / (1000*60)) % 60);
                 hours   = (int) ((millisLeft / (1000*60*60)) % 24);
+                weeks = (int) (millisLeft / (1000 * 60 * 60 * 24 * 7));
+                years = (int) (millisLeft / 1000 / 60 / 60 / 24 / 365);
 
-                daysLeftTextView.setText(days + " " + daysStr);
+                daysLeftTextView.setText(
+                        days + " " + daysStr + '\n' +
+                        weeks + " " + weeksStr + '\n' +
+                        years + " " + yearsStr + '\n'
+                );
                 timeLeftTextView.setText(String.format("%02d:%02d:%02d", hours, minutes, seconds));
 
             }

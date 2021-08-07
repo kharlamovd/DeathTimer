@@ -32,6 +32,8 @@
     <string name="days_left">24709 days</string>
     <string name="hms_left">05:55:43</string>
     <string name="days">days</string>
+    <string name="weeks">weeks</string>
+    <string name="years">years</string>
 
     <string name="settings">Settings</string>
     <string name="get_date_auto">Calculate date automatically</string>

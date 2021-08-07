@@ -49,6 +49,6 @@
         android:fontFamily="@font/roboto_regular"
         android:linksClickable="true"
         android:text="@string/priv_policy" />
-    android:autoLink="web"-->
+    <!--android:autoLink="web"-->
 
 </LinearLayout>

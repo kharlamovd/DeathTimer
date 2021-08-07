@@ -51,9 +51,12 @@ public class NotificationWorker extends Worker {
                 new NotificationCompat.Builder(context, CHANNEL_ID)
                         .setSmallIcon(R.drawable.notif_ico)
                         .setContentTitle(context.getString(R.string.notification))
-                        .setContentText(TimeLeftActivity.getTimeLeft(context))
+                        //.setContentText(TimeLeftActivity.getTimeLeft(context))
                         .setAutoCancel(true)
-                        .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+                        .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                        .setStyle(
+                                new NotificationCompat.BigTextStyle().bigText(TimeLeftActivity.getTimeLeft(context))
+                        );
 
         PendingIntent contentIntent = PendingIntent.getActivity(context, 0,
                 new Intent(context, MainActivity.class), PendingIntent.FLAG_UPDATE_CURRENT);

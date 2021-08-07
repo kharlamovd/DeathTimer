@@ -3,17 +3,17 @@ package com.brands.deathtimer.nav_btns_listeners;
 import android.app.Activity;
 import android.view.View;
 
-public class BackOnClick implements View.OnClickListener {
+    public class BackOnClick implements View.OnClickListener {
 
-    private Activity activity;
+        private Activity activity;
 
-    public BackOnClick(Activity activity) {
-        this.activity = activity;
-    }
+        public BackOnClick(Activity activity) {
+            this.activity = activity;
+        }
 
-    @Override
-    public void onClick(View view) {
-        activity.onBackPressed();
-    }
+        @Override
+        public void onClick(View view) {
+            activity.onBackPressed();
+        }
 
 }
